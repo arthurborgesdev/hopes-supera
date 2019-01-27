@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+
+<html>
+
+    <head>
+        <title>Hopes/Cadastro</title>
+        <meta charset="utf-8"/>
+        <style>
+            h1{color: powderblue; text-align: center; font-family: 'Courier New', Courier, monospace; font-size: 500%;}
+            h2{text-align: center; font-family: 'Courier New', Courier, monospace; font-size: 250%;}
+            div.box {text-align: center}
+        </style>
+    </head>
+
+    <body>
+        
+        <form method="post" action="/publish">
+
+            <div class="box">
+                <h1>Hopes</h1>
+                <h2>Publicar</h2>
+                <label style="margin-left: 2%">Título:</label>
+                <input required type="text"/><br><br>
+                <label>Descrição:</label>
+                <input required type="textarea" rows="10" cols="30"/><br><br>
+                <input type="file"></input><br><br>
+                <button type="submit">Publicar</button>
+                <button type="button"><a href="/feed">Cancelar</a></button>
+            </div>
+
+            
+        </form>
+        
+    </body>
+
+</html>

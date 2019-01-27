@@ -32,63 +32,30 @@
                           <a class="nav-link" href="/profile">Usuário</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="index.html">Logout</a>
+                          <a class="nav-link" href="/">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/">Excluir</a>
                         </li>
                     </ul>
                 </div>
             </nav>
-        
-            
+
         <div class="publish">
             <img src= "./img/icone.jpeg" height="50"/>
             <label>[Título]Arte 1</label><br>
             <img src="./img/arte.jpeg" width="500"/><br>
             <label>[Descrição]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel enim nec urna elementum tincidunt vitae eu purus. Vestibulum ac dictum orci. Sed fermentum nisl non nulla tempor, eget malesuada orci vestibulum. Nulla in eleifend orci. Nam non lacus tortor. Nunc urna arcu, rhoncus vitae ligula in, pellentesque ultricies dolor. Nulla condimentum eget justo sed volutpat. Nullam malesuada tortor id ipsum aliquet pharetra.</label><br>
             
-            <img src= "./img/icone2.jpeg" height="50"/>
-            <label>[Título] Arte 2</label><br>
-            <img src="./img/download(1).jfif" height="500"/><br>
-            <label>[Descrição]Duis ullamcorper, lacus lobortis consectetur ultrices, sem nisi tincidunt ipsum, molestie rutrum ante purus id erat. Vestibulum mollis odio a ornare dapibus. Suspendisse tincidunt vitae nisl et hendrerit. Etiam ut mauris diam. Sed nec tortor varius, feugiat nunc nec, bibendum nulla. Proin molestie ultricies commodo. Praesent a tellus arcu. In hac habitasse platea dictumst. Proin ultricies nisl vitae turpis interdum ultrices. Duis posuere ultrices nisl non imperdiet. Suspendisse commodo, orci id porta dignissim, velit urna pharetra sem, eu malesuada leo felis ac massa. Nullam lacinia, nunc et vehicula luctus, nisl dolor luctus massa, nec varius turpis sapien auctor arcu.</label><br>
-            
             <img src= "./img/icone.jpeg" height="50"/>
             <label>[Título] Arte 3</label><br>
             <img src="./img/arte2.jpeg" height="500"/><br>
             <label>[Descrição]Duis ullamcorper, lacus lobortis consectetur ultrices, sem nisi tincidunt ipsum, molestie rutrum ante purus id erat. Vestibulum mollis odio a ornare dapibus. Suspendisse tincidunt vitae nisl et hendrerit. Etiam ut mauris diam. Sed nec tortor varius, feugiat nunc nec, bibendum nulla. Proin molestie ultricies commodo. Praesent a tellus arcu. In hac habitasse platea dictumst. Proin ultricies nisl vitae turpis interdum ultrices. Duis posuere ultrices nisl non imperdiet. Suspendisse commodo, orci id porta dignissim, velit urna pharetra sem, eu malesuada leo felis ac massa. Nullam lacinia, nunc et vehicula luctus, nisl dolor luctus massa, nec varius turpis sapien auctor arcu.</label><br>
             
-            <img src= "./img/icone3.jfif" height="50"/>
-            <label>[Título] Arte 4</label><br>
-            <img src="./img/download.jfif" height="500"/><br>
-            <label>[Descrição]Duis ullamcorper, lacus lobortis consectetur ultrices, sem nisi tincidunt ipsum, molestie rutrum ante purus id erat. Vestibulum mollis odio a ornare dapibus. Suspendisse tincidunt vitae nisl et hendrerit. Etiam ut mauris diam. Sed nec tortor varius, feugiat nunc nec, bibendum nulla. Proin molestie ultricies commodo. Praesent a tellus arcu. In hac habitasse platea dictumst. Proin ultricies nisl vitae turpis interdum ultrices. Duis posuere ultrices nisl non imperdiet. Suspendisse commodo, orci id porta dignissim, velit urna pharetra sem, eu malesuada leo felis ac massa. Nullam lacinia, nunc et vehicula luctus, nisl dolor luctus massa, nec varius turpis sapien auctor arcu.</label><br>
-            
         </div>
-        <div class="demo">
-        
-            <p id="demop"></p>
-        </div>
-        <script>
-                var obj, dbParam, xmlhttp, myObj, x, txt = "";
-                obj = { table: "BD", limit: 4 };
-                dbParam = JSON.stringify(obj);
-                xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    myObj = JSON.parse(this.responseText);
-                    txt += "<table border='1'>"
-                    for (x in myObj) {
-                      txt += "<tr><td>" + myObj[x].name + "</td></tr>";
-                    }
-                    txt += "</table>"    
-                    document.getElementById("demop").innerHTML = txt;
-                  }
-                };
-                xmlhttp.open("POST", "json_demo_db_post.php", true);
-                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send("x=" + dbParam);
-                </script>
-
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 </html>
