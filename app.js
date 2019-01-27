@@ -7,6 +7,8 @@ const express = require('express'),
       mongoose = require('mongoose');
       
 // substitui pelo link do mLAB no heroku em produção
+/* Essa parte ficará desabilitada em produção por enquanto
+até o banco ser setado.
 if (process.env.NODE_ENV === "development") {
 	mongoose.connect('mongodb://localhost/hopes', { useNewUrlParser: true })
 } else if (process.env.NODE_ENV === "production") {
@@ -23,7 +25,7 @@ var userSchema = new mongoose.Schema({
 
 // Compilation of schema into Model
 var User = mongoose.model('User', userSchema);
-
+*/
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
