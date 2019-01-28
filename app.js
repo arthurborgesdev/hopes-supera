@@ -74,12 +74,14 @@ app.post('/', function(req, res) {
     username: req.body.username,
     password: req.body.password
   }
+  console.log(input);
 
   const verifyUser = function(db, callback) {
   	const collection = db.collection('users');
   	console.log(input)
   	collection.findOne({ 
-  		username: input.username
+  		username: input.username,
+  		password: input.password
   	}, function(err, result) {
   		console.log(result);
   		callback(result);
@@ -92,7 +94,7 @@ app.post('/', function(req, res) {
     } else {
     	res.sendFile("index.html", rootPATH)
     }
-  	client.close();
+  	//client.close();
   });
 
   
@@ -122,7 +124,9 @@ app.post('/register', function(req, res) {
   }
 
   insertUser(db, function() {
-  	client.close();
+
+  	res.sendFile("index.html", rootPATH)
+  	//client.close();
   });
   
   /* Essa parte não está funcionando - 
@@ -143,7 +147,7 @@ app.post('/register', function(req, res) {
     }
   });
   */
-  res.sendFile("index.html", rootPATH)
+  
 })
 
 app.get('/feed', function(req, res) {
