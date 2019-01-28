@@ -129,25 +129,6 @@ app.post('/register', function(req, res) {
   	//client.close();
   });
   
-  /* Essa parte não está funcionando - 
-  "Cannot read property 'save' of null"
-  User.findOne({}, function(err, user) {
-  	if (err) {
-  		console.log(error);
-  		res.send("ERROR!!")
-  		return;
-  	} else if(user !== null) {
-      res.sendFile("index.html", rootPATH)
-      return;
-    } else {
-    	user.save(function(err) {
-    	  res.sendFile("register.html", rootPATH);
-        return;
-    	})
-    }
-  });
-  */
-  
 })
 
 app.get('/feed', function(req, res) {
@@ -164,8 +145,27 @@ app.get('/publish', function(req, res) {
 
 app.post('/publish', function(req, res) {
   // logica para receber a imagem e salvar no banco de dados
+  let input = {
+    title: req.body.title,
+    description: req.body.description
+  }
 
-  res.sendFile("feed.html", rootPATH)
+  const insertArt = function(db, callback) {
+  	const collection = db.collection('arts');
+  	collection.insertOne({
+  		title: input.title,
+  		description: input.description
+  	}, function(err, result) {
+  		console.log(result);
+  		callback(result);
+  	})
+  }
+
+  insertArt(db, function() {
+
+  	res.sendFile("feed.html", rootPATH)
+  	//client.close();
+  });
 })
 
 app.delete('/user', function(req, res) {
