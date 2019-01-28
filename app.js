@@ -26,6 +26,24 @@ var userSchema = new mongoose.Schema({
 // Compilation of schema into Model
 var User = mongoose.model('User', userSchema);
 */
+
+// MongoDB using the oficial driver
+
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+const url = 'mongodb://localhost:27017';
+const dbName = 'hopes';
+
+const client = new MongoClient(url);
+let db;
+client.connect(function(err) {
+	assert.equal(null, err);
+	console.log("Connected successfully to server");
+
+	db = client.db(dbName);
+});
+
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
@@ -57,7 +75,27 @@ app.post('/', function(req, res) {
     password: req.body.password
   }
 
-  res.sendFile("feed.html", rootPATH)
+  const verifyUser = function(db, callback) {
+  	const collection = db.collection('users');
+  	console.log(input)
+  	collection.findOne({ 
+  		username: input.username
+  	}, function(err, result) {
+  		console.log(result);
+  		callback(result);
+  	})
+  }
+
+  verifyUser(db, function(result) {
+    if (result) {
+    	res.sendFile("feed.html", rootPATH)
+    } else {
+    	res.sendFile("index.html", rootPATH)
+    }
+  	client.close();
+  });
+
+  
 })
 
 app.get('/register', function(req, res) {
@@ -69,7 +107,23 @@ app.post('/register', function(req, res) {
 
   let input = {
     username: req.body.username,
+    password: req.body.password
   }
+
+  const insertUser = function(db, callback) {
+  	const collection = db.collection('users');
+  	collection.insertOne({
+  		username: input.username,
+  		password: input.password
+  	}, function(err, result) {
+  		console.log(result);
+  		callback(result);
+  	})
+  }
+
+  insertUser(db, function() {
+  	client.close();
+  });
   
   /* Essa parte não está funcionando - 
   "Cannot read property 'save' of null"
